@@ -1,0 +1,32 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Engineering",
+      "description": "Daily code-work skills for planning, building, testing, and reviewing.",
+      "skills": [
+        "tdd",
+        "prepare-for-review",
+        "review",
+        "grill-with-docs",
+        "to-issues",
+        "to-prd",
+        "zoom-out",
+        "improve-codebase-architecture",
+        "setup-formsg-ai-skills"
+      ]
+    },
+    {
+      "title": "General",
+      "description": "Thinking and communication skills that work across any domain.",
+      "skills": [
+        "grill-me",
+        "caveman",
+        "handoff",
+        "ubiquitous-language",
+        "write-a-skill"
+      ]
+    }
+  ]
+}
