@@ -38,9 +38,11 @@ The goal is to spend the bulk of your time thinking and setting guardrails — b
 /grill-with-docs
 ```
 
-| | |
-|:---|:---:|
-| Interview yourself relentlessly against the existing domain model. The skill asks one question at a time, explores the codebase rather than guessing, and updates `CONTEXT.md` and ADRs inline as decisions crystallise. Keep going until you've resolved every branch of the design tree and the guardrails are clear all the way to the end goal. | <img src="../../assets/grill-me.png" alt="Grill-me — your prompt only installs the guardrails halfway; install the rest with grill-me" width="300"> |
+Interview yourself relentlessly against the existing domain model. The skill asks one question at a time, explores the codebase rather than guessing, and updates `CONTEXT.md` and ADRs inline as decisions crystallise. Keep going until you've resolved every branch of the design tree and the guardrails are clear all the way to the end goal.
+
+| Grill-me — your prompt only installs the guardrails halfway; install the rest with grill-me |
+|:---:|
+| <img src="../../assets/grill-me.png" alt="Grill-me — your prompt only installs the guardrails halfway; install the rest with grill-me" width="660"> |
 
 ### 2. Write the PRD
 
@@ -68,9 +70,13 @@ Breaks the PRD into independently-grabbable vertical-slice issues. Each issue go
 /tdd
 ```
 
-| | |
-|:---|:---:|
-| Red-green-refactor loop per issue. For frontend slices, the skill runs a visual gate against a Figma design source via an agent browser — make sure [`agent-browser`](https://github.com/browserbase/agent-browser) (or equivalent) is installed before starting.<br><br>The loop: write a failing test → make it pass → refactor → drop a breadcrumb for any non-obvious decision → repeat. | <img src="../../assets/tdd.png" alt="TDD — keep the agent on the path" width="300"> |
+Red-green-refactor loop per issue. For frontend slices, the skill runs a visual gate against a Figma design source via an agent browser — make sure [`agent-browser`](https://github.com/browserbase/agent-browser) (or equivalent) is installed before starting.
+
+The loop: write a failing test → make it pass → refactor → drop a breadcrumb for any non-obvious decision → repeat.
+
+| TDD — keep the agent on the path |
+|:---:|
+| <img src="../../assets/tdd.png" alt="TDD — keep the agent on the path" width="660"> |
 
 ### 5. Prepare for review
 
