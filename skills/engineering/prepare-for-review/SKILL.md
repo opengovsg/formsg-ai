@@ -7,7 +7,7 @@ description: Assemble a review-ready PR body and inline comments from the breadc
 
 Author-side companion to `review`. Moves rationale from where it was captured (breadcrumbs, ADRs, PRD) into where reviewers look (PR body, inline comments). Does not generate rationale — empty sources produce omitted sections.
 
-Requires `docs/agents/issue-tracker.md` and `docs/agents/decisions-breadcrumb.md`. Run `/setup-matt-pocock-skills` if missing.
+Requires `docs/agents/issue-tracker.md` and `docs/agents/decisions-breadcrumb.md`. Run `/setup-formsg-ai-skills` if missing.
 
 ## Workflow
 
