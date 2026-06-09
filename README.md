@@ -8,8 +8,8 @@ To make AI agents work well, there are 2 fundamental ideas:
 
 | **1. Context management** | **2. Grounding** |
 |---|---|
-| Keep your agent context minimal and focused | Provide ground truths (eg, prompt, grill-me, docs) your agent can adhere itself to |
-| <img src="assets/frequent-intentional-compaction.png" alt="Frequent Intentional Compaction — building your entire workflow around context management" width="300"> | <img src="assets/bonsai.png" alt="Bonsai — provide the ground truths harness your agent adheres to" width="300"> |
+| Keep your agent context minimal and focused | Provide strong ground truths (bonsai wire eg, prompt, grill-me, docs, tests) your agent can adhere itself to |
+| <img src="assets/context-management.png" alt="Context engineering — building your entire workflow around context management" width="300"> | <img src="assets/bonsai.png" alt="Bonsai — provide the ground truths harness your agent adheres to" width="300"> |
 
 This repository is an implementation of the above 2 key ideas. 
 
@@ -44,3 +44,6 @@ See [skills/engineering/README.md](skills/engineering/README.md) for the full st
 ## Skills reference
 
 See [skills/README.md](skills/README.md) for the full skill list.
+
+## Acknowledgements 
+This repository acknowledges the work from Matt Pocock's [skills](https://github.com/mattpocock/skills), which some of these skills and ideas are based and adapted off.  
