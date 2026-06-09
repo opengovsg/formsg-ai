@@ -9,7 +9,7 @@ To make AI agents work well, there are 2 fundamental ideas:
 | **1. Context management** | **2. Grounding** |
 |---|---|
 | Keep your agent context minimal and focused | Provide strong ground truths (bonsai wire eg, prompt, grill-me, docs, tests) your agent can adhere itself to |
-| <img src="assets/context-management.png" alt="Context engineering — building your entire workflow around context management" width="300"> | <img src="assets/bonsai.png" alt="Bonsai — provide the ground truths harness your agent adheres to" width="300"> |
+| <p align="center"><img src="assets/context-management.png" alt="Context engineering — building your entire workflow around context management" height="220"></p> | <p align="center"><img src="assets/bonsai.png" alt="Bonsai — provide the ground truths harness your agent adheres to" height="220"></p> |
 
 This repository is an implementation of the above 2 key ideas. 
 
