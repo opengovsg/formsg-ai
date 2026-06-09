@@ -4,13 +4,12 @@ AI productivity tools for FormSG — shared Claude Code skills and autonomous ag
 
 ## Primer: Effective AI Usage
 
-To make AI agents work well, there are 2 fundamental ideas: 
-1. context management = keep your agent context minimal and focused 
-2. grounding = provide ground truths (eg, prompt, grill-me, docs) your agent can adhere itself to
+To make AI agents work well, there are 2 fundamental ideas:
 
-![Frequent Intentional Compaction — building your entire workflow around context management](assets/frequent-intentional-compaction.png)
-
-![Bonsai — provide the ground truths harness your agent adheres to](assets/bonsai.png)
+| **1. Context management** | **2. Grounding** |
+|---|---|
+| Keep your agent context minimal and focused | Provide ground truths (eg, prompt, grill-me, docs) your agent can adhere itself to |
+| <img src="assets/frequent-intentional-compaction.png" alt="Frequent Intentional Compaction — building your entire workflow around context management" width="300"> | <img src="assets/bonsai.png" alt="Bonsai — provide the ground truths harness your agent adheres to" width="300"> |
 
 This repository is an implementation of the above 2 key ideas. 
 
