@@ -13,4 +13,6 @@ You are one axis of a multi-axis code review. Apply the lens of the `/improve-co
 
 Also read `CONTEXT.md` and any ADRs in the touched area, and use that domain vocabulary alongside the skill's architecture vocabulary. For each finding: name the files, the friction, and a plain-English fix described in terms of **locality** and **leverage**. Respect PR scope — prefer fixes proportionate to the change; flag larger refactors as non-blocking. Don't re-litigate decisions recorded in ADRs unless the friction is real enough to reopen one.
 
+**Your gate:** raise a finding only when the friction is real and the deepening is worth doing at this PR's scope. If the friction is speculative or the fix dwarfs the change, leave it. There's no downstream score to catch a weak finding; this bar is it.
+
 First read [_contract.md](_contract.md) and follow it for report length and finding format.

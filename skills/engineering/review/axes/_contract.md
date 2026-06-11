@@ -9,5 +9,7 @@ Every axis brief follows this. It's the single source of truth for report length
 **For each finding:**
 
 - Anchor to a `file:line` and quote the line(s) of code it concerns. **Anchoring is the default, not optional:** every finding must name the specific changed line it sits on so it can be posted inline. A finding that *genuinely* spans the change still anchors to the most relevant changed line and explains the broader scope in its text — it does **not** get to skip a line. The only findings without a single anchor are the truly diffuse ones (a pattern across many files, a concern about the shape of the diff); flag those explicitly as cross-cutting with a one-line reason there's no single line. "Best-effort" means pick the best line when one isn't perfect — never license to drop the anchor or lump findings into one unanchored blob.
-- State your confidence (0–100) that it's a real, in-scope issue, plus one line of evidence.
+- **Disposition depends on your axis-type**, plus one line of evidence either way:
+  - **Standards / Spec (correctness):** state a confidence (0–100) that it's a real, in-scope issue.
+  - **Architecture / Divergent (judgement):** no number — state instead whether the reasoning holds and the alternative is genuinely better for the PR's scope. Don't invent a score; that disposition *is* your gate (see your brief).
 - Cross-cutting findings cite a primary `file:line` plus the others.

@@ -13,4 +13,6 @@ For each meaningful change, ask:
 
 Zoom out before judging — read callers and related modules (use `/zoom-out` if you don't know the area) so the alternatives you raise are grounded in the project, not generic.
 
+**Your gate:** raise a finding only when all three hold — the alternative is genuinely better, it's grounded in the project (not generic advice), and now is the right time. If any one fails, confirm the chosen approach and move on. There's no downstream score to catch a weak finding; this bar is it.
+
 First read [_contract.md](_contract.md) and follow it for report length and finding format.

@@ -4,20 +4,19 @@ Adapted from Anthropic's `/code-review`. Findings the user dismisses cost more c
 
 ## How to run it
 
-**One verifier per finding, in parallel — routed by axis-type.** Each gets only the diff, the one finding, and the standards-file list — **not** the originating axis's reasoning (the finder is the worst judge of its own finding).
+**Correctness axes (Standards/Spec): one verifier per finding, in parallel.** Each verifier gets only the diff, the one finding, and the standards-file list — **not** the originating axis's reasoning (the finder is the worst judge of its own finding). Verify on **Haiku** (`Agent(..., model: "haiku")`; in a Workflow, `agent(prompt, {model: "haiku"})`). Locating a bug against the rubric is cheap, and stays cheap only because it's Haiku + single-finding + parallel — don't hand one agent all findings.
 
-- **Correctness axes (Standards/Spec)** → verify on **Haiku** (`Agent(..., model: "haiku")`; in a Workflow, `agent(prompt, {model: "haiku"})`). Locating a bug against the rubric is cheap, and stays cheap only because it's Haiku + single-finding + parallel — don't hand one agent all findings.
-- **Judgement axes (Architecture/Divergent)** → verify on **the review model**.
+**Judgement axes (Architecture/Divergent): no verifier sub-agent.** Their gate lives in the axis brief itself — a finding only survives the finder when the reasoning holds and the alternative is genuinely better for the PR's scope. The orchestrator takes these findings as-is, applying only the always-drop list below and the dedup step. Surface the strongest few.
 
-The verifier:
+The correctness verifier:
 
 1. **Locates the finding** via its cited `file:line` + quoted code — best-effort: an off-by-a-few line or a cross-cutting finding still counts as located if its quoted code is in the diff. Score **0** only when the finding can't be tied to the changed code at all (the quote matches nothing) — that's the unfalsifiable, likely-hallucinated case the gate exists to catch.
 2. For a finding against a documented standard, **confirms the doc actually says it** — "CLAUDE.md says so" doesn't count if the rule isn't there.
-3. **Applies the track for its axis** (see Disposition): Standards/Spec → a 0–100 confidence score against the rubric; Architecture/Divergent → whether the *reasoning holds and the alternative is genuinely better*. Returns its verdict + one line of evidence.
+3. Scores it **0–100** against the rubric below, and returns its verdict + one line of evidence.
 
 ### Dedup
 
-Per-finding verifiers can't see each other, so the same file+line flagged by two axes (commonly Architecture **and** Divergent) survives twice. After scoring, the orchestrator merges them — highest score, cite both axes. A text-merge, not another agent.
+The same file+line gets flagged by two axes (commonly Architecture **and** Divergent) and survives twice. The orchestrator merges them — keep the higher score where they carry one, cite both axes. A text-merge, not another agent.
 
 ### Rubric (correctness axes — give to the scoring agent verbatim)
 
@@ -32,7 +31,7 @@ Per-finding verifiers can't see each other, so the same file+line flagged by two
 The rubric is calibrated for *bug-likelihood*, so a single cutoff would filter out the design feedback this skill exists to surface:
 
 - **Standards & Spec (correctness):** the finding claims something is *wrong* → **drop everything below 70**.
-- **Architecture & Divergent (judgement):** no numeric cutoff — keep a finding only if the *reasoning holds and the alternative is genuinely better* for the PR's scope. Surface the strongest few.
+- **Architecture & Divergent (judgement):** no numeric cutoff and no verifier — the *reasoning holds and the alternative is genuinely better* gate is already enforced by the finder (see its brief), so there's nothing to re-score here. Just dedup and apply the always-drop list. Surface the strongest few.
 
 If an axis has no surviving finding, report it clean.
 
