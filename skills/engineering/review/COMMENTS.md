@@ -72,7 +72,7 @@ Place the score as the **last item in the Conventional-Comments decoration slot*
 - Multiple: `issue (blocking, if-minor, confidence: 100/100): ...`
 - Judgement axes: `suggestion: ...` (no confidence)
 
-Surviving correctness findings sit above the cutoff [FILTER.md](FILTER.md) sets (the filter drops the rest), so the number is a real signal — a finding just over the line is a different ask than a 100.
+Surviving correctness findings sit above the cutoff [FILTER.md](FILTER.md) sets (the filter drops the rest), so the number is a confidence signal to prevent false positives.
 
 ## Combine similar comments 
 
