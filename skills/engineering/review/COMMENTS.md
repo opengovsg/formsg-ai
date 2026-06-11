@@ -4,8 +4,44 @@ Only when the user asks to post to the PR. A surviving finding (one that passes 
 
 ## Where to post
 
-- **Inline, on the line(s).** Anchor each finding to the specific lines it concerns via `gh` (e.g. `gh pr comment` for general, or the PR review API for line-anchored comments). On-the-LoC comments are far easier for the author to act on than a wall of prose at the bottom.
-- **One optional summary comment**, only if it adds value: what to focus on first, what the review covered, what it deliberately skipped. Skip it if the inline comments speak for themselves — don't post a summary that just restates them.
+**Inline, on the line(s), is mandatory.** Every finding anchors to the specific changed line it concerns — a line-pinned review comment, not a bottom-of-PR issue comment. On-the-LoC comments are far easier for the author to act on than a wall of prose at the bottom. **Do not use `gh pr comment`** for findings — it posts an unanchored issue comment, which is the failure mode this skill exists to avoid.
+
+### How to post — one batched review
+
+Post all findings as a **single review** via the GitHub review API, with one entry in the `comments[]` array per finding. One atomic call, one notification, every finding inline. Build it in three steps:
+
+1. **Resolve the head SHA and repo/PR coordinates:**
+   ```bash
+   gh pr view <pr> --json number,headRefOid,headRepository,headRepositoryOwner \
+     -q '{n: .number, sha: .headRefOid}'
+   # owner/repo: gh repo view --json owner,name -q '.owner.login + "/" + .name'
+   ```
+2. **Assemble the review payload** — `event: COMMENT`, an optional `body` (the summary; see below), and a `comments[]` array. Each comment needs `path`, `line` (the line in the file's new version), `side` (`RIGHT` for added/context lines, `LEFT` for deleted), and `body` (the formatted finding). Write it to a temp JSON file so multi-line bodies and arrays stay intact:
+   ```bash
+   gh api repos/{owner}/{repo}/pulls/{n}/reviews \
+     --method POST --input review.json
+   ```
+   where `review.json` is:
+   ```json
+   {
+     "commit_id": "<headRefOid>",
+     "event": "COMMENT",
+     "body": "<summary — empty string if none>",
+     "comments": [
+       { "path": "src/foo.ts", "line": 42, "side": "RIGHT", "body": "issue (standards, confidence: 85/100): ..." },
+       { "path": "src/bar.ts", "line": 88, "side": "RIGHT", "body": "suggestion (divergent): ..." }
+     ]
+   }
+   ```
+3. **If a comment's line lands on an unchanged line** GitHub rejects the whole review (422). For a finding that spans a hunk, use `start_line` + `line` (range) or pin to the nearest changed line within the hunk and explain the scope in the body — see the cross-cutting rule below.
+
+### Cross-cutting findings → the summary body
+
+A finding that genuinely spans the change (a pattern repeated across files, an architectural concern about the shape of the diff) and has **no single most-relevant line** goes into the review's `body` (the summary), **not** a standalone bottom comment and **not** forced onto an arbitrary line. Each such finding must carry a one-line justification of why it has no single anchor. Everything that *can* be pinned to a line **must** be — don't drain findings into the summary to avoid anchoring work.
+
+### The summary body otherwise
+
+Beyond cross-cutting findings, add summary text only if it adds value: what to focus on first, what the review covered, what it deliberately skipped. Skip it if the inline comments speak for themselves — don't restate them. An empty `body` is fine when every finding is inline.
 
 ## When there's nothing to post (empty / low-signal)
 
@@ -24,6 +60,22 @@ Skip entirely if the PR is closed, merged, or draft.
 ## Conventional comments
 
 Follow the Conventional comments spec. Avoid `praise` to reduce noise.
+
+### Show the confidence score (correctness axes only)
+
+Name the **axis** in the decoration slot so the author can place the finding at a glance, and surface the `confidence` (0–100) for correctness findings so they can weigh it:
+
+- Standards and Spec findings carry a numeric `confidence` from the filter — `<axis>, confidence: NN/100`, using the axis name (`standards` / `spec`).
+- Architecture and Divergent findings have **no** numeric score (their disposition is "the reasoning holds and the alternative is genuinely better") — name the axis alone (`architecture` / `divergent`), don't invent a score.
+
+Place the score as the **last item in the Conventional-Comments decoration slot**, after any other items.
+
+- no other decoration: `issue (standards, confidence: 85/100): ...`
+- with decoration(s): `suggestion (non-blocking, spec, confidence: 90/100): ...`
+- multiple decorators: `issue (blocking, if-minor, standards, confidence: 100/100): ...`
+- divergent or architecture axis: `suggestion (divergent): ...` (axis named, no confidence)
+
+Surviving correctness findings sit above the cutoff [FILTER.md](FILTER.md) sets (the filter drops the rest), so the number is a confidence signal to prevent false positives.
 
 ## Combine similar comments 
 

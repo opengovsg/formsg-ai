@@ -54,11 +54,11 @@ Then send a single message with one `Agent` call per applicable axis (`general-p
 - **Architecture** → `axes/architecture.md`
 - **Divergent** → `axes/divergent.md`
 
-Every brief follows the shared finding contract (`axes/_contract.md`) — a ~400-word cap and a confidence score + evidence per finding — so the filter in step 5 has what it needs.
+Every brief follows the shared finding contract (`axes/_contract.md`) — a ~400-word cap and, per finding, an axis-typed disposition (a confidence score for the correctness axes; the reasoning-holds judgement for Architecture/Divergent) plus evidence — so the filter in step 5 has what it needs.
 
 ### 5. Verify each finding against false positives
 
-Collect the findings the axis agents returned and run them all through the gate in [FILTER.md](FILTER.md) before aggregating: independent per-finding verification, dedup by file+line, and a per-axis disposition that drops the rest. This gate is what makes autonomous posting safe — a finding the author dismisses costs more credibility than a missed nit. [FILTER.md](FILTER.md) is the single source of truth for the mechanics, rubric, thresholds, and the always-drop list; follow it rather than re-deriving them here.
+Collect the findings the axis agents returned and run them through the gate in [FILTER.md](FILTER.md) before aggregating: independent per-finding verification for the correctness axes (Standards/Spec), dedup by file+line, and a per-axis disposition that drops the rest. The judgement axes (Architecture/Divergent) carry no verifier — their gate lives in the axis brief, so the orchestrator takes them as-is and only dedups and applies the always-drop list. This gate is what makes autonomous posting safe — a finding the author dismisses costs more credibility than a missed nit. [FILTER.md](FILTER.md) is the single source of truth for the mechanics, rubric, thresholds, and the always-drop list; follow it rather than re-deriving them here.
 
 ### 6. Aggregate
 
@@ -66,7 +66,7 @@ Present each surviving finding under its axis heading (`## Standards`, `## Spec`
 
 ### 7. (Optional) Post as PR comments
 
-Only if the user asked to post. One comment per surviving finding, anchored inline on its line(s) via `gh`; add a summary comment only if it adds value. **If nothing survived, say so — don't manufacture nits.** **If the PR was already reviewed by this tool, re-evaluate against the prior comments, the author's replies, and commits pushed since — post only the delta, never a repost.** Skip closed/merged/draft PRs. Format, labels, AI disclaimer, empty-review path, and re-review logic: [COMMENTS.md](COMMENTS.md).
+Only if the user asked to post. **Post one batched, fully-inline review** — every surviving finding anchored on its line(s), never an unanchored `gh pr comment`. **If nothing survived, say so — don't manufacture nits.** **If the PR was already reviewed by this tool, post only the delta, never a repost.** Skip closed/merged/draft PRs. See [COMMENTS.md](COMMENTS.md) for the mechanics, confidence display, cross-cutting handling, format, labels, AI disclaimer, empty-review path, and re-review logic rather than re-deriving them here.
 
 ## Why separate axes
 
