@@ -28,8 +28,8 @@ Post all findings as a **single review** via the GitHub review API, with one ent
      "event": "COMMENT",
      "body": "<summary — empty string if none>",
      "comments": [
-       { "path": "src/foo.ts", "line": 42, "side": "RIGHT", "body": "issue (confidence: 85/100): ..." },
-       { "path": "src/bar.ts", "line": 88, "side": "RIGHT", "body": "suggestion: ..." }
+       { "path": "src/foo.ts", "line": 42, "side": "RIGHT", "body": "issue (standards, confidence: 85/100): ..." },
+       { "path": "src/bar.ts", "line": 88, "side": "RIGHT", "body": "suggestion (divergent): ..." }
      ]
    }
    ```
@@ -63,14 +63,17 @@ Follow the Conventional comments spec. Avoid `praise` to reduce noise.
 
 ### Show the confidence score (correctness axes only)
 
-Standards and Spec findings carry a numeric `confidence` (0–100) from the filter — surface it in the comment so the author can weigh it. Architecture and Divergent findings have **no** numeric score (their disposition is "the reasoning holds and the alternative is genuinely better"), so they show **no confidence** — don't invent one.
+Name the **axis** in the decoration slot so the author can place the finding at a glance, and surface the `confidence` (0–100) for correctness findings so they can weigh it:
 
-Place the score as the **last item in the Conventional-Comments decoration slot**, after any `blocking` / `non-blocking` / `if-minor`:
+- Standards and Spec findings carry a numeric `confidence` from the filter — `<axis>, confidence: NN/100`, using the axis name (`standards` / `spec`).
+- Architecture and Divergent findings have **no** numeric score (their disposition is "the reasoning holds and the alternative is genuinely better") — name the axis alone (`architecture` / `divergent`), don't invent a score.
 
-- No other decoration: `issue (confidence: 85/100): ...`
-- With decoration(s): `suggestion (non-blocking, confidence: 90/100): ...`
-- Multiple: `issue (blocking, if-minor, confidence: 100/100): ...`
-- Judgement axes: `suggestion: ...` (no confidence)
+Place the score as the **last item in the Conventional-Comments decoration slot**, after any other items.
+
+- no other decoration: `issue (standards, confidence: 85/100): ...`
+- with decoration(s): `suggestion (non-blocking, spec, confidence: 90/100): ...`
+- multiple decorators: `issue (blocking, if-minor, standards, confidence: 100/100): ...`
+- divergent or architecture axis: `suggestion (divergent): ...` (axis named, no confidence)
 
 Surviving correctness findings sit above the cutoff [FILTER.md](FILTER.md) sets (the filter drops the rest), so the number is a confidence signal to prevent false positives.
 
