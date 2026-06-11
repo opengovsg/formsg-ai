@@ -98,6 +98,10 @@ Collects the breadcrumbs, relevant ADRs, and the originating PRD and assembles t
 
 Runs four independent parallel sub-agents across the diff — Standards, Spec, Architecture, and Divergent design — then filters false positives and surfaces findings side-by-side. Use this before merging to catch issues across all four axes without one axis polluting another's context.
 
+| Review — use diverging nudges to cover a larger solution space |
+|:---:|
+| <img src="../../assets/review-divergence.png" alt="Review — use diverging nudges to cover a larger solution space" width="660"> |
+
 ---
 
 ### At a glance
