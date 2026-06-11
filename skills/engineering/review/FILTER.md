@@ -27,11 +27,11 @@ Per-finding verifiers can't see each other, so the same file+line flagged by two
 - **75** — Double-checked; likely hit in practice, or directly named in a standards doc.
 - **100** — Evidence confirms a real issue that will happen frequently.
 
-### Disposition — an 80 doesn't mean the same thing on every axis
+### Disposition — a 70 doesn't mean the same thing on every axis
 
 The rubric is calibrated for *bug-likelihood*, so a single cutoff would filter out the design feedback this skill exists to surface:
 
-- **Standards & Spec (correctness):** the finding claims something is *wrong* → **drop everything below 80**.
+- **Standards & Spec (correctness):** the finding claims something is *wrong* → **drop everything below 70**.
 - **Architecture & Divergent (judgement):** no numeric cutoff — keep a finding only if the *reasoning holds and the alternative is genuinely better* for the PR's scope. Surface the strongest few.
 
 If an axis has no surviving finding, report it clean.

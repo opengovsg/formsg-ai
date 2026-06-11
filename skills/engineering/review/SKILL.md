@@ -66,7 +66,7 @@ Present each surviving finding under its axis heading (`## Standards`, `## Spec`
 
 ### 7. (Optional) Post as PR comments
 
-Only if the user asked to post. One comment per surviving finding, anchored inline on its line(s) via `gh`; add a summary comment only if it adds value. **If nothing survived, say so — don't manufacture nits.** **If the PR was already reviewed by this tool, re-evaluate against the prior comments, the author's replies, and commits pushed since — post only the delta, never a repost.** Skip closed/merged/draft PRs. Format, labels, AI disclaimer, empty-review path, and re-review logic: [COMMENTS.md](COMMENTS.md).
+Only if the user asked to post. **Post one batched review** (`gh api .../pulls/{n}/reviews` with a `comments[]` array) — every surviving finding anchored **inline on its line(s)**, never an unanchored `gh pr comment`. Standards/Spec comments carry their numeric `confidence`; Architecture/Divergent don't. Cross-cutting findings with no single line go in the review's summary body. **If nothing survived, say so — don't manufacture nits.** **If the PR was already reviewed by this tool, re-evaluate against the prior comments, the author's replies, and commits pushed since — post only the delta, never a repost.** Skip closed/merged/draft PRs. Format, labels, AI disclaimer, empty-review path, and re-review logic: [COMMENTS.md](COMMENTS.md).
 
 ## Why separate axes
 
