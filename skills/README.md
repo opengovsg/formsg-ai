@@ -9,6 +9,7 @@ No per-repo setup required — available immediately after installing the plugin
 | Skill | Description |
 |-------|-------------|
 | [`/caveman`](general/caveman/SKILL.md) | Ultra-compressed responses (~75% fewer tokens) without losing technical accuracy |
+| [`/formsg-oracle`](general/formsg-oracle/SKILL.md) | Answer FormSG "why" questions from prior decisions in Notion and Slack — cite every claim |
 | [`/grill-me`](general/grill-me/SKILL.md) | Stress-test a plan by being interviewed relentlessly, one decision at a time |
 | [`/handoff`](general/handoff/SKILL.md) | Compact the current conversation into a handoff doc for a fresh agent |
 | [`/ubiquitous-language`](general/ubiquitous-language/SKILL.md) | Extract a DDD-style glossary from the conversation and save it to `UBIQUITOUS_LANGUAGE.md` |
@@ -18,3 +19,4 @@ No per-repo setup required — available immediately after installing the plugin
 ## Engineering skills
 
 Requires `/setup-formsg-ai-skills` per repo. See [engineering/README.md](engineering/README.md) for setup, the full skill list, and the recommended workflow.
+f
