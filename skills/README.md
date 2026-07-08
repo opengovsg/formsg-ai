@@ -12,6 +12,7 @@ No per-repo setup required — available immediately after installing the plugin
 | [`/formsg-oracle`](general/formsg-oracle/SKILL.md) | Answer FormSG "why" questions from prior decisions in Notion and Slack — cite every claim |
 | [`/grill-me`](general/grill-me/SKILL.md) | Stress-test a plan by being interviewed relentlessly, one decision at a time |
 | [`/handoff`](general/handoff/SKILL.md) | Compact the current conversation into a handoff doc for a fresh agent |
+| [`/landing-page-prototype`](general/landing-page-prototype/SKILL.md) | Build HTML landing page prototypes by studying a reference site's design system and adapting it for a brand brief |
 | [`/ubiquitous-language`](general/ubiquitous-language/SKILL.md) | Extract a DDD-style glossary from the conversation and save it to `UBIQUITOUS_LANGUAGE.md` |
 | [`/write-a-skill`](general/write-a-skill/SKILL.md) | Create new skills with proper structure and bundled resources |
 | [`/humanizer`](general/humanizer/SKILL.md) | Remove signs of AI writing from text, making it more natural and human |
