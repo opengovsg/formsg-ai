@@ -14,6 +14,7 @@
     "./skills/general/caveman",
     "./skills/general/grill-me",
     "./skills/general/handoff",
+    "./skills/general/landing-page-prototype",
     "./skills/general/write-a-skill"
   ]
 }
