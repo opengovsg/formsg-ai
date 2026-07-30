@@ -19,4 +19,3 @@ No per-repo setup required — available immediately after installing the plugin
 ## Engineering skills
 
 Requires `/setup-formsg-ai-skills` per repo. See [engineering/README.md](engineering/README.md) for setup, the full skill list, and the recommended workflow.
-f
