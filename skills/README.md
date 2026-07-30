@@ -16,7 +16,14 @@ No per-repo setup required — available immediately after installing the plugin
 | [`/write-a-skill`](general/write-a-skill/SKILL.md) | Create new skills with proper structure and bundled resources |
 | [`/humanizer`](general/humanizer/SKILL.md) | Remove signs of AI writing from text, making it more natural and human |
 
+## Product skills
+
+Product management workflows. No per-repo setup required. See [product/README.md](product/README.md).
+
+| Skill | Description |
+|-------|-------------|
+| [`/reportcard`](product/reportcard/SKILL.md) | Add a quarter's team, cost and metric values to an OGP product report card by auditing the last recorded quarter, then asking the PM for each missing number |
+
 ## Engineering skills
 
 Requires `/setup-formsg-ai-skills` per repo. See [engineering/README.md](engineering/README.md) for setup, the full skill list, and the recommended workflow.
-f
