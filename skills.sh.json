@@ -18,6 +18,14 @@
       ]
     },
     {
+      "title": "Product",
+      "description": "Product management workflows.",
+      "skills": [
+        "highlights",
+        "reportcard"
+      ]
+    },
+    {
       "title": "General",
       "description": "Thinking and communication skills that work across any domain.",
       "skills": [
