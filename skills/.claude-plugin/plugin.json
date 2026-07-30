@@ -15,6 +15,7 @@
     "./skills/general/grill-me",
     "./skills/general/handoff",
     "./skills/general/write-a-skill",
+    "./skills/product/highlights",
     "./skills/product/reportcard"
   ]
 }

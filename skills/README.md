@@ -22,6 +22,7 @@ Product management workflows. No per-repo setup required. See [product/README.md
 
 | Skill | Description |
 |-------|-------------|
+| [`/highlights`](product/highlights/SKILL.md) | Scan a product's Slack, GitHub and Notion sources for a quarter's shipped work, then draft the `CHANGELOG.md` entry in that product's existing format |
 | [`/reportcard`](product/reportcard/SKILL.md) | Add a quarter's team, cost and metric values to an OGP product report card by auditing the last recorded quarter, then asking the PM for each missing number |
 
 ## Engineering skills
