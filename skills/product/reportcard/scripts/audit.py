@@ -5,7 +5,7 @@ Stdlib only -- no PyYAML, no node_modules. Parses the narrow YAML subset
 this repo uses (mappings, sequences, scalars, wrapped plain scalars).
 
 Usage:
-    python3 audit.py _products/formsg/reportcard.yml [--quarter 2026-04-01]
+    python3 scripts/audit.py _products/formsg/reportcard.yml [--quarter 2026-04-01]
 """
 
 import argparse

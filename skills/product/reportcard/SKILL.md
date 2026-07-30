@@ -1,6 +1,6 @@
 ---
 name: reportcard
-description: Add a new quarter's team, cost and metric values to an OGP product report card (_products/<product>/reportcard.yml) by auditing the last recorded quarter, then asking the PM for each missing number. Use when someone wants to update, add, or draft a quarterly report card, add a new quarter's metrics/cost/team, or mentions reportcard.yml, "Q1/Q2/Q3/Q4 report card", or the products.open.gov.sg draft editor. For writing the CHANGELOG entry, use the highlights skill instead.
+description: Add a new quarter's team, cost and metric values to an OGP product report card (_products/<product>/reportcard.yml) by auditing the last recorded quarter, then asking the PM for each missing number. Use when someone wants to update, add, or draft a quarterly report card, add a new quarter's metrics/cost/team, or mentions reportcard.yml, "Q1/Q2/Q3/Q4 report card", or the products.open.gov.sg draft editor. Writing the CHANGELOG entry is out of scope for this skill.
 ---
 
 # Report card: add a quarter
@@ -9,7 +9,8 @@ Collect a quarter's numbers from the PM and append them to
 `_products/<product>/reportcard.yml`.
 
 Does not source data, does not open PRs, and does not write the changelog —
-`/highlights` owns that, and will be suggested if the quarter has no entry. **Never invent, interpolate, or
+that needs a scan of Slack, GitHub and the team's planning doc, which is
+out of scope here. **Never invent, interpolate, or
 carry forward a metric value** — every number comes from the PM, anything
 unanswered stays `TBC`, and past quarters are never edited.
 

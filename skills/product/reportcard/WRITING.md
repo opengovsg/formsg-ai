@@ -33,13 +33,13 @@ New entry keyed by `startDate: 'YYYY-MM-01'`, month `01`/`04`/`07`/`10`.
   only if it actually changed.
 - `cost.values`: all six keys — `infra`, `security`, `manpower`, `corporate`,
   `tools`, `others`.
-- `CHANGELOG.md`: **not this skill's job** — `/highlights` owns it, because a
-  good entry needs a scan of Slack, GitHub and the team's planning doc.
+- `CHANGELOG.md`: **not this skill's job** — a good entry needs a scan of
+  Slack, GitHub and the team's planning doc, which is out of scope here.
   - If the PM supplies changelog text directly, add it at the top as
     `## Q<n> <year> <Mon-Mon>`, matching the previous entry's structure.
   - If they do not, leave the file alone and say the quarter is missing an
-    entry, then point them at `/highlights`. Do not improvise one from the
-    metric values — numbers are not a story.
+    entry. Do not improvise one from the metric values — numbers are not a
+    story.
 
 ## When the cost figures are not in yet
 

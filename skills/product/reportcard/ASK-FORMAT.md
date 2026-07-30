@@ -104,9 +104,9 @@ changelog:
 ```
 
 The `changelog:` line is optional and exists only so a PM who already has the
-text can hand it over. Leaving it blank is normal — `/highlights` writes a
-proper entry from a scan of Slack, GitHub and the planning doc. Never write
-one yourself from the metric values.
+text can hand it over. Leaving it blank is normal — writing a proper entry
+needs a scan of Slack, GitHub and the planning doc, which is out of scope
+for this skill. Never write one yourself from the metric values.
 
 **Cost keys are pre-filled with `0`** — not because zero is likely right, but
 because a quarter with no cost entry does not render at all. The default gets
