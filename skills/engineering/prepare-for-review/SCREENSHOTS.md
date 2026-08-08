@@ -12,8 +12,8 @@ Ask: "Start your dev server, log in in the agent-browser window if the app requi
 
 ## URL list
 
-1. If the PRD has a "User journey" or explicit pages list, seed from it.
-2. Else, infer URLs from changed file paths via framework convention (Next.js `app/`/`pages/`, SvelteKit `src/routes/`, Remix `app/routes/`). If the framework is unrecognised and the PRD is silent, ask the user.
+1. If the spec has a "User journey" or explicit pages list, seed from it.
+2. Else, infer URLs from changed file paths via framework convention (Next.js `app/`/`pages/`, SvelteKit `src/routes/`, Remix `app/routes/`). If the framework is unrecognised and the spec is silent, ask the user.
 3. Present the proposed URL list and wait for explicit confirmation before capturing.
 
 Slug = kebab-case of the route. `/settings/team` → `settings-team`; `/` → `root`.
@@ -38,7 +38,7 @@ agent-browser screenshot ".github/screenshots/<feature>/after-billing.png"
 
 **Degradation paths.** If the dev server doesn't hot-reload across the checkout (production build, lockfile drift, schema/migration mismatch), skip before for that page, fall back to after-only, and note "before unavailable — `<reason>`" in the PR body.
 
-**Journey steps** (only if PRD has a "User journey" section): perform each step with `agent-browser` commands, capture as `journey-<n>-<slug>.png`. See `agent-browser skills get core` for click/wait/selector syntax.
+**Journey steps** (only if the spec has a "User journey" section): perform each step with `agent-browser` commands, capture as `journey-<n>-<slug>.png`. See `agent-browser skills get core` for click/wait/selector syntax.
 
 ## Persisted manifest
 
@@ -90,7 +90,7 @@ Slot between **Alternatives considered** and **Breaking Changes**:
 | --- | --- | --- |
 | `/path` | ![before](<raw-url>) | ![after](<raw-url>) |
 
-**User journey: `<journey name>`**  <!-- only if PRD has one -->
+**User journey: `<journey name>`**  <!-- only if the spec has one -->
 
 1. ![step 1 — <caption>](<raw-url>)
 2. ![step 2 — <caption>](<raw-url>)

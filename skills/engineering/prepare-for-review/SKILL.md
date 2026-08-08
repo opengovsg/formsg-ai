@@ -1,11 +1,11 @@
 ---
 name: prepare-for-review
-description: Assemble a review-ready PR body with relevant inline comments from breadcrumbs, ADRs, spec, tickets or PRD. Use when the user has finished implementation on a branch and wants to ship for review.
+description: Assemble a review-ready PR body with relevant inline comments from breadcrumbs, ADRs, the spec, and tickets. Use when the user has finished implementation on a branch and wants to ship for review.
 ---
 
 # Prepare for Review
 
-Author-side companion to `review`. Moves rationale from where it was captured (breadcrumbs, ADRs, PRD) into where reviewers look (PR body, inline comments). Does not generate rationale — empty sources produce omitted sections.
+Author-side companion to `review`. Moves rationale from where it was captured (breadcrumbs, ADRs, the spec) into where reviewers look (PR body, inline comments). Does not generate rationale — empty sources produce omitted sections.
 
 Requires `docs/agents/ticket-tracker.md` and `docs/agents/decisions-breadcrumb.md`. Run `/setup-formsg-ai-skills` if missing.
 
@@ -16,7 +16,7 @@ Requires `docs/agents/ticket-tracker.md` and `docs/agents/decisions-breadcrumb.m
 2. **Collect rationale sources**
    - Breadcrumbs: `.scratch/<feature>/decisions.md` (optional)
    - ADRs: `docs/adr/` files touching paths in the diff
-   - Spec/ticket: from commit message refs via `docs/agents/ticket-tracker.md`, else `.scratch/<feature>/prd.md`. Ask user if absent.
+   - Spec/ticket: from commit message refs via `docs/agents/ticket-tracker.md`, else `.scratch/<feature>/SPEC.md`. Ask user if absent.
 
 3. **Assemble PR body** — follow [TEMPLATE.md](TEMPLATE.md). Omit any sub-section whose source is empty.
 

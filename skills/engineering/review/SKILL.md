@@ -32,7 +32,7 @@ Look for the originating spec, in this order:
 
 1. Ticket references in commit messages (`#123`, `Closes #45`, GitLab `!67`) - fetch via project's ticket tracker.
 2. A path the user passed as an argument.
-3. A PRD/spec file under `docs/`, `specs/`, or `.scratch/` matching the branch or feature.
+3. A spec file under `docs/`, `specs/`, or `.scratch/` matching the branch or feature.
 4. If nothing is found, ask. If there's no spec, the **Spec** axis skips and reports "no spec available".
 
 ### 3. Identify the standards sources
