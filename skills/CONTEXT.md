@@ -8,12 +8,19 @@ A collection of agent skills (slash commands and behaviors) loaded by Claude Cod
 The tool that hosts a repo's issues — GitHub Issues, Linear, a local `.scratch/` markdown convention, or similar. Skills like `to-tickets` and `to-spec` read from and write to it.
 _Avoid_: backlog manager, backlog backend, issue host
 
+**Ticket**:
+A single tracked unit of work inside an **Issue tracker** — a bug, a task, or a vertical slice produced by `to-tickets`. A ticket declares its blocking edges, its pinned implementation decisions, and its test gates.
+_Avoid_: issue (use only for the tracker's own record — see **Issue**), story, card
+
 **Issue**:
-A single tracked unit of work inside an **Issue tracker** — a bug, task, spec, or slice produced by `to-tickets`.
-_Avoid_: ticket (use only when quoting external systems that call them tickets)
+The record that holds a **Ticket** in a tracker that calls its records issues (GitHub, GitLab). The ticket is the unit of work; the issue is where it lives. In a `.scratch/` markdown repo there is no issue — only the ticket file.
+
+**Spec**:
+The document `to-spec` publishes: the settled problem, the decisions behind it, and the pinned decisions an implementation agent must not deviate from. Engineers own it, and it carries implementation decisions rather than product requirements.
+_Avoid_: PRD, design doc
 
 **Triage role**:
-A canonical state-machine label applied to an **Issue** during triage (e.g. `needs-triage`, `ready-for-afk`). Each role maps to a real label string in the **Issue tracker** via `docs/agents/triage-labels.md`.
+A canonical state-machine label applied to a **Ticket** during triage (e.g. `needs-triage`, `ready-for-agent`). Each role maps to a real label string in the **Issue tracker** via `docs/agents/triage-labels.md`.
 
 **Breadcrumb**:
 An author-written decision note dropped during implementation, capturing a small in-impl judgment call (the choice, alternatives considered, optional file:line anchor) that's too narrow for an **ADR**. Lives in `.scratch/<feature>/decisions.md` in the consuming repo. Consumed by `prepare-for-review` to populate PR body and inline review comments without re-deriving rationale from the diff.
@@ -21,7 +28,7 @@ _Avoid_: "decision log entry" (overlaps with ADR), "comment" (overlaps with code
 
 **Design source**:
 The canonical visual spec a frontend slice is verified against — typically a Figma file via the Figma MCP, but may be a user-supplied screenshot or description. Used by the `tdd` skill's visual cycle as the grounding for the **Visual gate**. Optional: a slice may have no design source, in which case the visual gate degrades to self-consistency review.
-_Avoid_: "mock", "design", "spec" (overloaded)
+_Avoid_: "mock", "design", "spec" (a **Spec** is the `to-spec` document)
 
 **Visual gate**:
 The agent-browser-vs-**Design source** comparison that closes a visual RED→GREEN cycle in the `tdd` skill. Uncommitted (not a regression test); pass bar is "no deviation a designer would flag in review." Distinct from committed visual regression (Chromatic snapshots of stories in CI).
@@ -29,10 +36,13 @@ _Avoid_: "visual test" (overlaps with Chromatic/story-based regression)
 
 ## Relationships
 
-- An **Issue tracker** holds many **Issues**
-- An **Issue** carries one **Triage role** at a time
+- An **Issue tracker** holds many **Tickets**, one per **Issue** where the tracker has issues
+- A **Ticket** carries one **Triage role** at a time
+- A **Spec** produces many **Tickets**; a ticket names the spec it came from
 
 ## Flagged ambiguities
 
 - "backlog" was previously used to mean both the *tool* hosting issues and the *body of work* inside it — resolved: the tool is the **Issue tracker**; "backlog" is no longer used as a domain term.
 - "backlog backend" / "backlog manager" — resolved: collapsed into **Issue tracker**.
+- "issue" was previously the unit of work — resolved: the unit is the **Ticket**; "issue" is only the tracker's record of one. `docs/agents/issue-tracker.md` keeps its name, because the tool is still the **Issue tracker**.
+- "pinned contract" (`grill-for-implementation`) and "pinned implementation decision" (`to-spec`, `to-tickets`) name the same thing — a decision a later agent executes verbatim. Unresolved: the skills still use both.
