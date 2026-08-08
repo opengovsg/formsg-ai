@@ -119,4 +119,4 @@ prevents potential named export colliding with an intrinsic function property (n
 Prevents having 2 different methods in the codebase of resolving these named exports
 
 Note: 
-- when improving this review skill, refer to the recommendations in /write-a-skill to ensure this skill will perform optimally. 
+- when improving this review skill, refer to the recommendations in /writing-for-agents to ensure this skill will perform optimally. 
