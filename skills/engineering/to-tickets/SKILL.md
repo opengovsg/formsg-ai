@@ -63,7 +63,7 @@ Iterate until the user approves the breakdown.
 
 Publish the approved tickets. **How** depends on the tracker `/setup-formsg-ai-skills` configured — the tickets are the same either way, only the shape of the blocking edges changes:
 
-- **Local files** → write one file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use the per-ticket file template below — one ticket per file, never a single combined file.
+- **Local files** → write one file per ticket under `.scratch/<feature-slug>/tickets/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use the per-ticket file template below — one ticket per file, never a single combined file.
 - **A real ticket tracker (GitHub, Linear, …)** → publish one record per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Use the platform's native blocking / sub-issue relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking tickets. Apply the `ready-for-agent` triage label unless instructed otherwise — the tickets are agent-grabbable by construction.
 
 Work the **frontier**: any ticket whose blockers are all done. For a purely linear chain that means top to bottom.
@@ -85,7 +85,7 @@ Do NOT close or modify any parent ticket.
 
 </local-ticket-template>
 
-<issue-template>
+<tracker-ticket-template>
 
 ## Parent
 
@@ -118,6 +118,6 @@ The end-to-end behaviour this ticket makes work, from the user's perspective —
 
 - A reference to each blocking ticket, or "None — can start immediately".
 
-</issue-template>
+</tracker-ticket-template>
 
 In either form, avoid specific file paths or code snippets — they go stale fast. Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it and note briefly that it came from a prototype. Trim to the decision-rich parts — not a working demo, just the important bits.
