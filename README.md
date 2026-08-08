@@ -35,7 +35,7 @@ After installing, run this once in each repo where you want the engineering skil
 /setup-formsg-ai-skills
 ```
 
-This scaffolds the per-repo config (`docs/agents/`) that skills like `tdd`, `to-issues`, and `prepare-for-review` depend on.
+This scaffolds the per-repo config (`docs/agents/`) that skills like `tdd`, `to-tickets`, and `prepare-for-review` depend on.
 
 ## Recommended coding workflow
 

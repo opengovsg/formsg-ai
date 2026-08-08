@@ -19,14 +19,17 @@ Writes `docs/agents/` files that tell the other skills:
 | Skill | Description |
 |-------|-------------|
 | [`/setup-formsg-ai-skills`](setup-formsg-ai-skills/SKILL.md) | Scaffold per-repo agent config — run this first |
+| [`/domain-modeling`](domain-modeling/SKILL.md) | Build and sharpen the project's domain model — terminology, `CONTEXT.md`, and ADRs |
+| [`/codebase-design`](codebase-design/SKILL.md) | Shared vocabulary for designing deep modules — interface, depth, seam, adapter |
+| [`/grill-for-implementation`](grill-for-implementation/SKILL.md) | Grill a concrete implementation plan into pinned contracts in the spec or tickets |
+| [`/to-spec`](to-spec/SKILL.md) | Turn conversation context into a spec and publish it to the issue tracker — no interview |
+| [`/to-tickets`](to-tickets/SKILL.md) | Break a plan or spec into tracer-bullet tickets with blocking edges on the issue tracker |
 | [`/tdd`](tdd/SKILL.md) | Red-green-refactor loop; frontend slices get a visual gate against a Figma design source via Storybook |
+| [`/prepare-for-review`](prepare-for-review/SKILL.md) | Assemble a PR body and inline comments from breadcrumbs, ADRs, and the originating spec/tickets — run when implementation is done |
 | [`/review`](review/SKILL.md) | Multi-axis PR review across Standards, Spec, Architecture, and Divergent — each axis runs as a parallel sub-agent |
-| [`/prepare-for-review`](prepare-for-review/SKILL.md) | Assemble a PR body and inline comments from breadcrumbs, ADRs, and the originating PRD — run when implementation is done |
-| [`/to-issues`](to-issues/SKILL.md) | Break a plan or PRD into independently-grabbable vertical-slice issues on the project issue tracker |
-| [`/to-prd`](to-prd/SKILL.md) | Turn conversation context into a PRD and publish it to the issue tracker |
-| [`/grill-with-docs`](grill-with-docs/SKILL.md) | Stress-test a plan against the repo's CONTEXT.md and ADRs; updates documentation inline as decisions crystallise |
-| [`/improve-codebase-architecture`](improve-codebase-architecture/SKILL.md) | Surface deepening opportunities — shallow-to-deep refactors that improve testability and AI-navigability |
-| [`/zoom-out`](zoom-out/SKILL.md) | Get a module map of a code area you're unfamiliar with, using the project's domain glossary |
+| [`/split-prs`](split-prs/SKILL.md) | Reorganize a large PR into a gh-stack of deployable slices — each safe to ship alone, review-by-commit |
+| [`/improve-codebase-architecture`](improve-codebase-architecture/SKILL.md) | Scan for deepening opportunities, present them as an HTML report, then grill through the one you pick |
+| [`/wayfinder`](wayfinder/SKILL.md) | Plan work too big for one session as a shared map of decision tickets — resolve them one at a time until the way is clear |
 
 ## Recommended workflow
 
@@ -35,42 +38,42 @@ The goal is to spend the bulk of your time thinking and setting guardrails — b
 ### 1. Plan (spend ~80% of your time here)
 
 ```
-/grill-with-docs
+/grill-for-implementation
 ```
 
-Interview yourself relentlessly against the existing domain model. The skill asks one question at a time, explores the codebase rather than guessing, and updates `CONTEXT.md` and ADRs inline as decisions crystallise. Keep going until you've resolved every branch of the design tree and the guardrails are clear all the way to the end goal.
+Interview yourself relentlessly against the existing domain model (via `/domain-modeling`). Put load-bearing engineering decisions on the frontier — schema shape, failure modes, ordering, architecture — and pin each settled decision as a **pinned contract** in the spec or tickets so later agents execute them verbatim.
 
 | Grill-me — your prompt only installs the guardrails halfway; install the rest with grill-me |
 |:---:|
 | <img src="../../assets/grill-me.png" alt="Grill-me — your prompt only installs the guardrails halfway; install the rest with grill-me" width="660"> |
 
-### 2. Write the PRD
+### 2. Write the spec
 
 ```
-/to-prd
+/to-spec
 ```
 
-Synthesises everything from the grilling session into a PRD and publishes it to the issue tracker. No need to review the AI's summary — the grilling session already captured the decisions.
+Synthesises everything from the grilling session into a spec and publishes it to the issue tracker. No need to review the AI's summary — the grilling session already captured the decisions.
 
-### 3. Split into issues
+### 3. Split into tickets
 
 ```
-/to-issues
+/to-tickets
 ```
 
-Breaks the PRD into independently-grabbable vertical-slice issues. Each issue goes to a **fresh agent** with undiluted context — do not carry the planning conversation into implementation.
+Breaks the spec into tracer-bullet vertical-slice tickets, each declaring its blocking edges. Each ticket goes to a **fresh agent** with undiluted context — do not carry the planning conversation into implementation.
 
 | Vertical slicing — cut through every layer, not layer by layer |
 |:---:|
 | <img src="../../assets/vertical-slicing.png" alt="Vertical slicing — cut through every layer, not layer by layer" width="660"> |
 
-### 4. Implement with TDD (one issue per agent)
+### 4. Implement with TDD (one ticket per agent)
 
 ```
 /tdd
 ```
 
-Red-green-refactor loop per issue. For frontend slices, the skill runs a visual gate against a Figma design source via an agent browser — make sure [`agent-browser`](https://github.com/browserbase/agent-browser) (or equivalent) is installed before starting.
+Red-green-refactor loop per ticket. For frontend slices, the skill runs a visual gate against a Figma design source via an agent browser — make sure [`agent-browser`](https://github.com/browserbase/agent-browser) (or equivalent) is installed before starting.
 
 The loop: write a failing test → make it pass → refactor → drop a breadcrumb for any non-obvious decision → repeat.
 
@@ -84,11 +87,19 @@ The loop: write a failing test → make it pass → refactor → drop a breadcru
 /prepare-for-review
 ```
 
-Collects the breadcrumbs, relevant ADRs, and the originating PRD and assembles them into a PR body and inline comments. The goal is a PR that reviewers can understand, verify, and merge without needing to re-derive rationale from the diff.
+Collects the breadcrumbs, relevant ADRs, and the originating spec/tickets and assembles them into a PR body and inline comments. The goal is a PR that reviewers can understand, verify, and merge without needing to re-derive rationale from the diff.
 
 | Prepare for review — help reviewers understand, verify, and evaluate decisions |
 |:---:|
 | <img src="../../assets/prepare-for-review.png" alt="Prepare for review — help reviewers understand, verify, and evaluate decisions" width="660"> |
+
+### 5b. Or split a large change into stacked PRs
+
+```
+/split-prs
+```
+
+When the branch is too big for one reviewable PR, reorganize it into a **gh-stack** of **deployable slices** — each safe to merge and ship alone, review-by-commit, with PR bodies prepared from the same review template. Propose the stack and wait for approval before rewriting history. Requires the `gh` stack extension (`gh extension install github/gh-stack`).
 
 ### 6. Review
 
@@ -109,14 +120,17 @@ Runs four independent parallel sub-agents across the diff — Standards, Spec, A
 ```
 /setup-formsg-ai-skills          # once per repo
 
-/grill-with-docs                 # 80% of effort: think, plan, set guardrails
-/to-prd                          # publish PRD (no need to review AI summary)
-/to-issues                       # split into issues → each gets a fresh agent
+/grill-for-implementation        # 80% of effort: think, plan, pin contracts
+/to-spec                         # publish spec (no need to review AI summary)
+/to-tickets                      # split into tickets → each gets a fresh agent
 
-# per issue, in a new agent session:
+# per ticket, in a new agent session:
 /tdd                             # red-green-refactor (install agent-browser first)
 
 # when implementation is done:
 /prepare-for-review              # build PR from breadcrumbs + ADRs
+# or, if the branch is too large for one PR:
+/split-prs                       # gh-stack of deployable, review-by-commit slices
+
 /review                          # 4-axis review: Standards, Spec, Architecture, Divergent
 ```

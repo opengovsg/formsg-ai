@@ -8,15 +8,15 @@ No per-repo setup required — available immediately after installing the plugin
 
 | Skill | Description |
 |-------|-------------|
-| [`/caveman`](general/caveman/SKILL.md) | Ultra-compressed responses (~75% fewer tokens) without losing technical accuracy |
 | [`/formsg-oracle`](general/formsg-oracle/SKILL.md) | Answer FormSG "why" questions from prior decisions in Notion and Slack — cite every claim |
-| [`/grill-me`](general/grill-me/SKILL.md) | Stress-test a plan by being interviewed relentlessly, one decision at a time |
+| [`/grill-me`](general/grill-me/SKILL.md) | A relentless interview to sharpen a plan or design |
+| [`/grilling`](general/grilling/SKILL.md) | Grill the user relentlessly about a plan, decision, or idea |
 | [`/handoff`](general/handoff/SKILL.md) | Compact the current conversation into a handoff doc for a fresh agent |
-| [`/ubiquitous-language`](general/ubiquitous-language/SKILL.md) | Extract a DDD-style glossary from the conversation and save it to `UBIQUITOUS_LANGUAGE.md` |
-| [`/write-a-skill`](general/write-a-skill/SKILL.md) | Create new skills with proper structure and bundled resources |
+| [`/to-questionnaire`](general/to-questionnaire/SKILL.md) | Turn a decision you can't fully answer into a questionnaire for someone else to fill in |
+| [`/wait-what`](general/wait-what/SKILL.md) | Stop — that last message did not land; re-pitch it in plain English |
+| [`/writing-for-agents`](general/writing-for-agents/SKILL.md) | Writing documents for agents — skills, `AGENTS.md` / `CLAUDE.md`, and pointer docs |
 | [`/humanizer`](general/humanizer/SKILL.md) | Remove signs of AI writing from text, making it more natural and human |
 
 ## Engineering skills
 
 Requires `/setup-formsg-ai-skills` per repo. See [engineering/README.md](engineering/README.md) for setup, the full skill list, and the recommended workflow.
-f

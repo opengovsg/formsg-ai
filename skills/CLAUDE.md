@@ -13,7 +13,7 @@ Each bucket folder has a `README.md` that lists every skill in the bucket with a
 
 ### Issue tracker
 
-Issues and PRDs live as local markdown files under `.scratch/`. See `docs/agents/issue-tracker.md`.
+Tickets and Specs live as local markdown files under `.scratch/`. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
