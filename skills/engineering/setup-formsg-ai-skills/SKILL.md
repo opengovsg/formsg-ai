@@ -1,6 +1,6 @@
 ---
 name: setup-formsg-ai-skills
-description: Sets up an `## Agent skills` block in AGENTS.md/CLAUDE.md and `docs/agents/` so the engineering skills know this repo's issue tracker (GitHub or local markdown), triage label vocabulary, domain doc layout, and review-prep conventions (commit style and breadcrumb schema). Run before first use of `to-issues`, `to-prd`, `tdd`, `improve-codebase-architecture`, `zoom-out`, or `prepare-for-review` — or if those skills appear to be missing context.
+description: Sets up an `## Agent skills` block in AGENTS.md/CLAUDE.md and `docs/agents/` so the engineering skills know this repo's issue tracker (GitHub or local markdown), triage label vocabulary, domain doc layout, and review-prep conventions (commit style and breadcrumb schema). Run before first use of `to-tickets`, `to-spec`, `tdd`, `improve-codebase-architecture`, `wayfinder`, or `prepare-for-review` — or if those skills appear to be missing context.
 disable-model-invocation: true
 ---
 
@@ -36,7 +36,7 @@ Assume the user does not know what these terms mean. Each section starts with a 
 
 **Section A — Issue tracker.**
 
-> Explainer: The "issue tracker" is where issues live for this repo. Skills like `to-issues` and `to-prd` read from and write to it — they need to know whether to call `gh issue create`, write a markdown file under `.scratch/`, or follow some other workflow you describe. Pick the place you actually track work for this repo.
+> Explainer: The "issue tracker" is where issues live for this repo. Skills like `to-tickets` and `to-spec` read from and write to it — they need to know whether to call `gh issue create`, write a markdown file under `.scratch/`, or follow some other workflow you describe. Pick the place you actually track work for this repo.
 
 Default posture: these skills were designed for GitHub. If a `git remote` points at GitHub, propose that. If a `git remote` points at GitLab (`gitlab.com` or a self-hosted host), propose GitLab. Otherwise (or if the user prefers), offer:
 
