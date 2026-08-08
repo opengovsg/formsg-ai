@@ -9,12 +9,16 @@ The tool that hosts a repo's **Tickets** — GitHub Issues, Linear, a local `.sc
 _Avoid_: issue tracker, backlog manager, backlog backend, issue host
 
 **Ticket**:
-A single tracked unit of work inside a **Ticket tracker** — a bug, a task, or a vertical slice produced by `to-tickets`. A ticket declares its blocking edges, its pinned implementation decisions, and its test gates. A ticket is a ticket wherever it lives: a GitHub issue, a Linear card, or a markdown file under `.scratch/`.
+A single tracked unit of work inside a **Ticket tracker** — a bug, a task, or a vertical slice produced by `to-tickets`. A ticket declares its blocking edges, its **Pinned implementation decisions**, and its test gates. A ticket is a ticket wherever it lives: a GitHub issue, a Linear card, or a markdown file under `.scratch/`.
 _Avoid_: issue, story, card (use only when quoting a platform's own API — `gh issue create`, a GitHub child issue)
 
 **Spec**:
-The document `to-spec` publishes: the settled problem, the decisions behind it, and the pinned decisions an implementation agent must not deviate from. Engineers own it, and it carries implementation decisions rather than product requirements.
+The document `to-spec` publishes: the settled problem, the decisions behind it, and the **Pinned implementation decisions** an implementation agent must not deviate from. Engineers own it, and it carries implementation decisions rather than product requirements.
 _Avoid_: PRD, design doc
+
+**Pinned implementation decision**:
+A load-bearing engineering decision settled during grilling and written into a **Spec** or **Ticket** so that a later implementation agent executes it verbatim instead of guessing — schema shape, failure modes, ordering, architecture. Pinning is what makes a decision binding; an unpinned decision is just discussion.
+_Avoid_: pinned contract, pinned implementation contract ("contract" is reserved for an API contract, which is one _kind_ of thing a decision may pin)
 
 **Triage role**:
 A canonical state-machine label applied to a **Ticket** during triage (e.g. `needs-triage`, `ready-for-agent`). Each role maps to a real label string in the **Ticket tracker** via `docs/agents/triage-labels.md`.
@@ -36,10 +40,11 @@ _Avoid_: "visual test" (overlaps with Chromatic/story-based regression)
 - A **Ticket tracker** holds many **Tickets**
 - A **Ticket** carries one **Triage role** at a time
 - A **Spec** produces many **Tickets**; a ticket names the spec it came from
+- A **Spec** and a **Ticket** each carry zero or more **Pinned implementation decisions**; `grill-for-implementation` is what produces them
 
 ## Flagged ambiguities
 
 - "backlog" was previously used to mean both the *tool* hosting tickets and the *body of work* inside it — resolved: the tool is the **Ticket tracker**; "backlog" is no longer used as a domain term.
 - "backlog backend" / "backlog manager" — resolved: collapsed into **Ticket tracker**.
 - "issue" carried three senses: the unit of work, the tool that hosts it, and a defect a reviewer finds. Resolved: the unit of work is the **Ticket** and the tool is the **Ticket tracker**, so "issue" now means only a defect (in the `review` skill) or a platform's own word for its records (`gh issue create`, a GitHub child issue).
-- "pinned contract" (`grill-for-implementation`) and "pinned implementation decision" (`to-spec`, `to-tickets`) name the same thing — a decision a later agent executes verbatim. Unresolved: the skills still use both.
+- "pinned contract" (`grill-for-implementation`) and "pinned implementation decision" (`to-spec`, `to-tickets`) named the same thing — a decision a later agent executes verbatim. Resolved: collapsed into **Pinned implementation decision**. "Contract" is no longer used for it, since an API contract is only one of the things a decision can pin.

@@ -42,7 +42,7 @@ This list of user stories should be extremely extensive and cover all aspects of
 
 ## Implementation Decisions
 
-A list of implementation decisions that were made, specifying pinned decisions so the implementation agent does not deviate. This can include:
+A list of implementation decisions that were made, marking the **pinned implementation decisions** so the implementation agent does not deviate. This can include:
 
 - The modules that will be built/modified
 - The interfaces of those modules that will be modified
