@@ -33,7 +33,7 @@ thoughts: this is related to review comment regarding the reuse of the exported 
 
 refer to https://github.com/opengovsg/FormSG/pull/9502 and its PR comments and review for references. 
 
-new axis: practice divergent thinking. consider why each change was made and its theme and question if it is the best choice out of the alternatives. However, also consider the scope of the PR and if it makes sense to make this change now. (/zoom-out if you have to in order to get a full picture)
+new axis: practice divergent thinking. consider why each change was made and its theme and question if it is the best choice out of the alternatives. However, also consider the scope of the PR and if it makes sense to make this change now. (zoom out across callers and related modules if you have to in order to get a full picture)
 
 initially, the PR comment by AI was: 
 
