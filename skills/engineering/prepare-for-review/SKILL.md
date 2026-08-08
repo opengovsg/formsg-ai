@@ -1,6 +1,6 @@
 ---
 name: prepare-for-review
-description: Assemble a review-ready PR body and inline comments from the breadcrumbs the implementation loop captured, the ADRs in the touched area, and the originating PRD. Use when the user has finished implementation on a branch and wants to ship for review.
+description: Assemble a review-ready PR body with relevant inline comments from breadcrumbs, ADRs, spec, tickets or PRD. Use when the user has finished implementation on a branch and wants to ship for review.
 ---
 
 # Prepare for Review
