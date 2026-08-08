@@ -39,10 +39,9 @@ When exploring the codebase, use the project's domain glossary so that test name
 
 Before writing any code:
 
-1. Identify opportunities for [deep modules](deep-modules.md) (small interface, deep implementation)
-2. Design interfaces for [testability](interface-design.md)
-3. List the behaviors to test (not implementation steps)
-4. If the slice renders UI, route through [frontend-verification.md](frontend-verification.md) for the visual-cycle rules and the agent-browser-vs-design-source gate
+1. Shape the module and its interface — depth, seam placement, and designing for testability all come from the `/codebase-design` skill
+2. List the behaviors to test (not implementation steps)
+3. If the slice renders UI, route through [frontend-verification.md](frontend-verification.md) for the visual-cycle rules and the agent-browser-vs-design-source gate
 
 ### 2. Tracer Bullet
 
