@@ -1,6 +1,6 @@
 ---
 name: setup-formsg-ai-skills
-description: Sets up an `## Agent skills` block in AGENTS.md/CLAUDE.md and `docs/agents/` so the engineering skills know this repo's issue tracker (GitHub or local markdown), triage label vocabulary, domain doc layout, and review-prep conventions (commit style and breadcrumb schema). Run before first use of `to-tickets`, `to-spec`, `tdd`, `improve-codebase-architecture`, `wayfinder`, or `prepare-for-review` — or if those skills appear to be missing context.
+description: Sets up an `## Agent skills` block in AGENTS.md/CLAUDE.md and `docs/agents/` so the engineering skills know this repo's ticket tracker (GitHub or local markdown), triage label vocabulary, domain doc layout, and review-prep conventions (commit style and breadcrumb schema). Run before first use of `to-tickets`, `to-spec`, `tdd`, `improve-codebase-architecture`, `wayfinder`, or `prepare-for-review` — or if those skills appear to be missing context.
 disable-model-invocation: true
 ---
 
@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Scaffold the per-repo configuration that the engineering skills assume:
 
-- **Issue tracker** — where issues live (GitHub by default; local markdown is also supported out of the box)
+- **Ticket tracker** — where tickets live (GitHub by default; local markdown is also supported out of the box)
 - **Triage labels** — the strings used for the five canonical triage roles
 - **Domain docs** — where `CONTEXT.md` and ADRs live, and the consumer rules for reading them
 - **Review prep** — the repo's commit style and breadcrumb convention, consumed by `tdd` (writer) and `prepare-for-review` (reader)
@@ -26,7 +26,7 @@ Look at the current repo to understand its starting state. Read whatever exists;
 - `CONTEXT.md` and `CONTEXT-MAP.md` at the repo root
 - `docs/adr/` and any `src/*/docs/adr/` directories
 - `docs/agents/` — does this skill's prior output already exist?
-- `.scratch/` — sign that a local-markdown issue tracker convention is already in use
+- `.scratch/` — sign that a local-markdown ticket tracker convention is already in use
 
 ### 2. Present findings and ask
 
@@ -34,20 +34,20 @@ Summarise what's present and what's missing. Then walk the user through the four
 
 Assume the user does not know what these terms mean. Each section starts with a short explainer (what it is, why these skills need it, what changes if they pick differently). Then show the choices and the default.
 
-**Section A — Issue tracker.**
+**Section A — Ticket tracker.**
 
-> Explainer: The "issue tracker" is where issues live for this repo. Skills like `to-tickets` and `to-spec` read from and write to it — they need to know whether to call `gh issue create`, write a markdown file under `.scratch/`, or follow some other workflow you describe. Pick the place you actually track work for this repo.
+> Explainer: The "ticket tracker" is where tickets live for this repo. Skills like `to-tickets` and `to-spec` read from and write to it — they need to know whether to call `gh issue create`, write a markdown file under `.scratch/`, or follow some other workflow you describe. Pick the place you actually track work for this repo.
 
 Default posture: these skills were designed for GitHub. If a `git remote` points at GitHub, propose that. If a `git remote` points at GitLab (`gitlab.com` or a self-hosted host), propose GitLab. Otherwise (or if the user prefers), offer:
 
-- **GitHub** — issues live in the repo's GitHub Issues (uses the `gh` CLI)
-- **GitLab** — issues live in the repo's GitLab Issues (uses the [`glab`](https://gitlab.com/gitlab-org/cli) CLI)
-- **Local markdown** — issues live as files under `.scratch/<feature>/` in this repo (good for solo projects or repos without a remote)
+- **GitHub** — tickets live in the repo's GitHub Issues (uses the `gh` CLI)
+- **GitLab** — tickets live in the repo's GitLab Issues (uses the [`glab`](https://gitlab.com/gitlab-org/cli) CLI)
+- **Local markdown** — tickets live as files under `.scratch/<feature>/` in this repo (good for solo projects or repos without a remote)
 - **Other** (Jira, Linear, etc.) — ask the user to describe the workflow in one paragraph; the skill will record it as freeform prose
 
 **Section B — Triage label vocabulary.**
 
-> Explainer: Issues move through a state machine — needs evaluation, waiting on reporter, ready for an AFK agent to pick up, ready for a human, or won't fix. To do that, skills need to apply labels (or the equivalent in your issue tracker) that match strings *you've actually configured*. If your repo already uses different label names (e.g. `bug:triage` instead of `needs-triage`), map them here so the skills apply the right ones instead of creating duplicates.
+> Explainer: Tickets move through a state machine — needs evaluation, waiting on reporter, ready for an AFK agent to pick up, ready for a human, or won't fix. To do that, skills need to apply labels (or the equivalent in your ticket tracker) that match strings *you've actually configured*. If your repo already uses different label names (e.g. `bug:triage` instead of `needs-triage`), map them here so the skills apply the right ones instead of creating duplicates.
 
 The five canonical roles:
 
@@ -57,7 +57,7 @@ The five canonical roles:
 - `ready-for-human` — needs human implementation
 - `wontfix` — will not be actioned
 
-Default: each role's string equals its name. Ask the user if they want to override any. If their issue tracker has no existing labels, the defaults are fine.
+Default: each role's string equals its name. Ask the user if they want to override any. If their ticket tracker has no existing labels, the defaults are fine.
 
 **Section C — Domain docs.**
 
@@ -82,7 +82,7 @@ Bundled as one section because the two settings are always adopted together. Ski
 Show the user a draft of:
 
 - The `## Agent skills` block to add to whichever of `CLAUDE.md` / `AGENTS.md` is being edited (see step 4 for selection rules)
-- The contents of `docs/agents/issue-tracker.md`, `docs/agents/triage-labels.md`, `docs/agents/domain.md`, `docs/agents/commit-style.md`, `docs/agents/decisions-breadcrumb.md`
+- The contents of `docs/agents/ticket-tracker.md`, `docs/agents/triage-labels.md`, `docs/agents/domain.md`, `docs/agents/commit-style.md`, `docs/agents/decisions-breadcrumb.md`
 
 Let them edit before writing.
 
@@ -103,9 +103,9 @@ The block:
 ```markdown
 ## Agent skills
 
-### Issue tracker
+### Ticket tracker
 
-[one-line summary of where issues are tracked]. See `docs/agents/issue-tracker.md`.
+[one-line summary of where tickets are tracked]. See `docs/agents/ticket-tracker.md`.
 
 ### Triage labels
 
@@ -122,16 +122,16 @@ Commit style and breadcrumb convention for review-ready PRs. See `docs/agents/co
 
 Then write the docs files using the seed templates in this skill folder as a starting point:
 
-- [issue-tracker-github.md](./issue-tracker-github.md) — GitHub issue tracker
-- [issue-tracker-gitlab.md](./issue-tracker-gitlab.md) — GitLab issue tracker
-- [issue-tracker-local.md](./issue-tracker-local.md) — local-markdown issue tracker
+- [ticket-tracker-github.md](./ticket-tracker-github.md) — GitHub ticket tracker
+- [ticket-tracker-gitlab.md](./ticket-tracker-gitlab.md) — GitLab ticket tracker
+- [ticket-tracker-local.md](./ticket-tracker-local.md) — local-markdown ticket tracker
 - [triage-labels.md](./triage-labels.md) — label mapping
 - [domain.md](./domain.md) — domain doc consumer rules + layout
 - [commit-style.md](./commit-style.md) — house commit style for review-by-commit
 - [decisions-breadcrumb.md](./decisions-breadcrumb.md) — breadcrumb schema + examples
 
-For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch using the user's description.
+For "other" ticket trackers, write `docs/agents/ticket-tracker.md` from scratch using the user's description.
 
 ### 5. Done
 
-Tell the user the setup is complete and which engineering skills will now read from these files. Mention they can edit `docs/agents/*.md` directly later — re-running this skill is only necessary if they want to switch issue trackers or restart from scratch.
+Tell the user the setup is complete and which engineering skills will now read from these files. Mention they can edit `docs/agents/*.md` directly later — re-running this skill is only necessary if they want to switch ticket trackers or restart from scratch.

@@ -7,7 +7,7 @@ description: Assemble a review-ready PR body with relevant inline comments from 
 
 Author-side companion to `review`. Moves rationale from where it was captured (breadcrumbs, ADRs, PRD) into where reviewers look (PR body, inline comments). Does not generate rationale — empty sources produce omitted sections.
 
-Requires `docs/agents/issue-tracker.md` and `docs/agents/decisions-breadcrumb.md`. Run `/setup-formsg-ai-skills` if missing.
+Requires `docs/agents/ticket-tracker.md` and `docs/agents/decisions-breadcrumb.md`. Run `/setup-formsg-ai-skills` if missing.
 
 ## Workflow
 
@@ -16,7 +16,7 @@ Requires `docs/agents/issue-tracker.md` and `docs/agents/decisions-breadcrumb.md
 2. **Collect rationale sources**
    - Breadcrumbs: `.scratch/<feature>/decisions.md` (optional)
    - ADRs: `docs/adr/` files touching paths in the diff
-   - PRD/issue: from commit message refs via `docs/agents/issue-tracker.md`, else `.scratch/<feature>/prd.md`. Ask user if absent.
+   - Spec/ticket: from commit message refs via `docs/agents/ticket-tracker.md`, else `.scratch/<feature>/prd.md`. Ask user if absent.
 
 3. **Assemble PR body** — follow [TEMPLATE.md](TEMPLATE.md). Omit any sub-section whose source is empty.
 

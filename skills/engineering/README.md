@@ -9,7 +9,7 @@ Skills for day-to-day code work. All of these depend on per-repo configuration �
 ```
 
 Writes `docs/agents/` files that tell the other skills:
-- **Where issues live** — GitHub Issues or local `.scratch/` markdown
+- **Where tickets live** — GitHub Issues or local `.scratch/` markdown
 - **Triage label strings** — the five canonical triage roles (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`)
 - **Domain doc layout** — where `CONTEXT.md` and `docs/adr/` live
 - **Review-prep conventions** — commit style and breadcrumb schema consumed by `tdd` and `prepare-for-review`
@@ -22,8 +22,8 @@ Writes `docs/agents/` files that tell the other skills:
 | [`/domain-modeling`](domain-modeling/SKILL.md) | Build and sharpen the project's domain model — terminology, `CONTEXT.md`, and ADRs |
 | [`/codebase-design`](codebase-design/SKILL.md) | Shared vocabulary for designing deep modules — interface, depth, seam, adapter |
 | [`/grill-for-implementation`](grill-for-implementation/SKILL.md) | Grill a concrete implementation plan into pinned contracts in the spec or tickets |
-| [`/to-spec`](to-spec/SKILL.md) | Turn conversation context into a spec and publish it to the issue tracker — no interview |
-| [`/to-tickets`](to-tickets/SKILL.md) | Break a plan or spec into tracer-bullet tickets with blocking edges on the issue tracker |
+| [`/to-spec`](to-spec/SKILL.md) | Turn conversation context into a spec and publish it to the ticket tracker — no interview |
+| [`/to-tickets`](to-tickets/SKILL.md) | Break a plan or spec into tracer-bullet tickets with blocking edges on the ticket tracker |
 | [`/tdd`](tdd/SKILL.md) | Red-green-refactor loop; frontend slices get a visual gate against a Figma design source via Storybook |
 | [`/prepare-for-review`](prepare-for-review/SKILL.md) | Assemble a PR body and inline comments from breadcrumbs, ADRs, and the originating spec/tickets — run when implementation is done |
 | [`/review`](review/SKILL.md) | Multi-axis PR review across Standards, Spec, Architecture, and Divergent — each axis runs as a parallel sub-agent |
@@ -53,7 +53,7 @@ Interview yourself relentlessly against the existing domain model (via `/domain-
 /to-spec
 ```
 
-Synthesises everything from the grilling session into a spec and publishes it to the issue tracker. No need to review the AI's summary — the grilling session already captured the decisions.
+Synthesises everything from the grilling session into a spec and publishes it to the ticket tracker. No need to review the AI's summary — the grilling session already captured the decisions.
 
 ### 3. Split into tickets
 
