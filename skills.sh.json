@@ -6,27 +6,32 @@
       "title": "Engineering",
       "description": "Daily code-work skills for planning, building, testing, and reviewing.",
       "skills": [
+        "setup-formsg-ai-skills",
+        "domain-modeling",
+        "codebase-design",
+        "grill-for-implementation",
+        "to-spec",
+        "to-tickets",
         "tdd",
         "prepare-for-review",
         "review",
-        "grill-with-docs",
-        "to-issues",
-        "to-prd",
-        "zoom-out",
+        "split-prs",
         "improve-codebase-architecture",
-        "setup-formsg-ai-skills"
+        "wayfinder"
       ]
     },
     {
       "title": "General",
       "description": "Thinking and communication skills that work across any domain.",
       "skills": [
+        "formsg-oracle",
         "grill-me",
-        "caveman",
+        "grilling",
         "handoff",
-        "ubiquitous-language",
-        "write-a-skill",
-        "formsg-oracle"
+        "humanizer",
+        "to-questionnaire",
+        "wait-what",
+        "writing-for-agents"
       ]
     }
   ]
