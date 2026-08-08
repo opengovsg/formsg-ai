@@ -1,6 +1,7 @@
 ---
 name: split-prs
-description: Reorganize a large PR or branch into a gh-stack of deployable slices — each safe to merge and ship alone, review-by-commit, prepared with the review template. Use when the user wants to split a PR, stack a large change, cut deploy risk, or mentions split-prs / stacked PRs.
+description: Reorganize a large PR or branch into a gh-stack of deployable slices — each safe to merge and ship alone, review-by-commit, prepared with the review template.
+disable-model-invocation: true
 ---
 
 # Split PRs

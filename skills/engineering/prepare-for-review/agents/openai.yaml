@@ -1,0 +1,3 @@
+interface:
+  display_name: "Prepare for Review"
+  short_description: "Assemble a review-ready PR body"
