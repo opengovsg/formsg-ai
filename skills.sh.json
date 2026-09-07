@@ -15,6 +15,7 @@
         "tdd",
         "prepare-for-review",
         "review",
+        "concise-review",
         "split-prs",
         "improve-codebase-architecture",
         "wayfinder"

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Concise Review"
+  short_description: "Review a PR as terse anchored technical bullets"
+policy:
+  allow_implicit_invocation: false
