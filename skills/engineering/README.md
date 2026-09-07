@@ -27,7 +27,7 @@ Writes `docs/agents/` files that tell the other skills:
 | [`/tdd`](tdd/SKILL.md) | Red-green-refactor loop; frontend slices get a visual gate against a Figma design source via Storybook |
 | [`/prepare-for-review`](prepare-for-review/SKILL.md) | Assemble a PR body and inline comments from breadcrumbs, ADRs, and the originating spec/tickets — run when implementation is done |
 | [`/review`](review/SKILL.md) | Multi-axis PR review across Standards, Spec, Architecture, and Divergent — each axis runs as a parallel sub-agent |
-| [`/concise-review`](concise-review/SKILL.md) | Review a PR and report it as terse anchored bullets — strictly technical, no prose |
+| [`/concise-review`](concise-review/SKILL.md) | Review a PR as simple bullets under Blocking, Non-blocking, Questions, and Checked |
 | [`/split-prs`](split-prs/SKILL.md) | Reorganize a large PR into a gh-stack of deployable slices — each safe to ship alone, review-by-commit |
 | [`/improve-codebase-architecture`](improve-codebase-architecture/SKILL.md) | Scan for deepening opportunities, present them as an HTML report, then grill through the one you pick |
 | [`/wayfinder`](wayfinder/SKILL.md) | Plan work too big for one session as a shared map of decision tickets — resolve them one at a time until the way is clear |
@@ -134,5 +134,5 @@ Runs four independent parallel sub-agents across the diff — Standards, Spec, A
 /split-prs                       # gh-stack of deployable, review-by-commit slices
 
 /review                          # 4-axis review: Standards, Spec, Architecture, Divergent
-/concise-review <pr>             # same target, terse anchored bullets only
+/concise-review <pr>             # same target, findings as simple bullets only
 ```

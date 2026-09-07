@@ -1,5 +1,5 @@
 interface:
   display_name: "Concise Review"
-  short_description: "Review a PR as terse anchored technical bullets"
+  short_description: "Review a PR as simple bullets under fixed headings"
 policy:
   allow_implicit_invocation: false
