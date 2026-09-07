@@ -1,5 +1,5 @@
 interface:
   display_name: "Concise Review"
-  short_description: "Review a PR as simple bullets under fixed headings"
+  short_description: "Review a PR as one flat list of concise bullets"
 policy:
   allow_implicit_invocation: false
