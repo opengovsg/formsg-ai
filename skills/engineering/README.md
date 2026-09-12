@@ -27,6 +27,7 @@ Writes `docs/agents/` files that tell the other skills:
 | [`/tdd`](tdd/SKILL.md) | Red-green-refactor loop; frontend slices get a visual gate against a Figma design source via Storybook |
 | [`/prepare-for-review`](prepare-for-review/SKILL.md) | Assemble a PR body and inline comments from breadcrumbs, ADRs, and the originating spec/tickets — run when implementation is done |
 | [`/review`](review/SKILL.md) | Multi-axis PR review across Standards, Spec, Architecture, and Divergent — each axis runs as a parallel sub-agent |
+| [`/concise`](concise/SKILL.md) | Write a PR body, or reply to its comments, as concise readable bullets — the repo's own PR template, filled in plain sentences |
 | [`/split-prs`](split-prs/SKILL.md) | Reorganize a large PR into a gh-stack of deployable slices — each safe to ship alone, review-by-commit |
 | [`/improve-codebase-architecture`](improve-codebase-architecture/SKILL.md) | Scan for deepening opportunities, present them as an HTML report, then grill through the one you pick |
 | [`/wayfinder`](wayfinder/SKILL.md) | Plan work too big for one session as a shared map of decision tickets — resolve them one at a time until the way is clear |
@@ -132,5 +133,10 @@ Runs four independent parallel sub-agents across the diff — Standards, Spec, A
 # or, if the branch is too large for one PR:
 /split-prs                       # gh-stack of deployable, review-by-commit slices
 
+/concise                         # same body, concise bullets (add "stack" to slice first)
+
 /review                          # 4-axis review: Standards, Spec, Architecture, Divergent
+
+# when reviewers comment:
+/concise reply <pr>              # one anchored, concise reply per open thread
 ```
