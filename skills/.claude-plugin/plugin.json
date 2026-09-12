@@ -19,6 +19,7 @@
     "./skills/general/grilling",
     "./skills/general/handoff",
     "./skills/general/humanizer",
+    "./skills/general/mobbin-reference-sweep",
     "./skills/general/to-questionnaire",
     "./skills/general/wait-what",
     "./skills/general/writing-for-agents"
