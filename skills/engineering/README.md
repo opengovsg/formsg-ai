@@ -23,6 +23,7 @@ Writes `docs/agents/` files that tell the other skills:
 | [`/review`](review/SKILL.md) | Multi-axis PR review across Standards, Spec, Architecture, and Divergent — each axis runs as a parallel sub-agent |
 | [`/prepare-for-review`](prepare-for-review/SKILL.md) | Assemble a PR body and inline comments from breadcrumbs, ADRs, and the originating PRD — run when implementation is done |
 | [`/make-pr`](make-pr/SKILL.md) | Assemble a review-ready PR body (stack + layer-map diagrams, TC-grouped tests) and author inline comments from the diff, commits, and conversation — successor to `/prepare-for-review` |
+| [`/pr-layer-map`](pr-layer-map/SKILL.md) | Generate a Mermaid stack diagram of which FormSG layers a PR touches — paste-ready for a GitHub PR description |
 | [`/to-issues`](to-issues/SKILL.md) | Break a plan or PRD into independently-grabbable vertical-slice issues on the project issue tracker |
 | [`/to-prd`](to-prd/SKILL.md) | Turn conversation context into a PRD and publish it to the issue tracker |
 | [`/grill-with-docs`](grill-with-docs/SKILL.md) | Stress-test a plan against the repo's CONTEXT.md and ADRs; updates documentation inline as decisions crystallise |
