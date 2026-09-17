@@ -27,6 +27,14 @@ Writes `docs/agents/` files that tell the other skills:
 | [`/tdd`](tdd/SKILL.md) | Red-green-refactor loop; frontend slices get a visual gate against a Figma design source via Storybook |
 | [`/prepare-for-review`](prepare-for-review/SKILL.md) | Assemble a PR body and inline comments from breadcrumbs, ADRs, and the originating spec/tickets — run when implementation is done |
 | [`/review`](review/SKILL.md) | Multi-axis PR review across Standards, Spec, Architecture, and Divergent — each axis runs as a parallel sub-agent |
+| [`/prepare-for-review`](prepare-for-review/SKILL.md) | Assemble a PR body and inline comments from breadcrumbs, ADRs, and the originating PRD — run when implementation is done |
+| [`/make-pr`](make-pr/SKILL.md) | Assemble a review-ready PR body (stack + layer-map diagrams, TC-grouped tests) and author inline comments from the diff, commits, and conversation — successor to `/prepare-for-review` |
+| [`/pr-layer-map`](pr-layer-map/SKILL.md) | Generate a Mermaid stack diagram of which FormSG layers a PR touches — paste-ready for a GitHub PR description |
+| [`/to-issues`](to-issues/SKILL.md) | Break a plan or PRD into independently-grabbable vertical-slice issues on the project issue tracker |
+| [`/to-prd`](to-prd/SKILL.md) | Turn conversation context into a PRD and publish it to the issue tracker |
+| [`/grill-with-docs`](grill-with-docs/SKILL.md) | Stress-test a plan against the repo's CONTEXT.md and ADRs; updates documentation inline as decisions crystallise |
+| [`/improve-codebase-architecture`](improve-codebase-architecture/SKILL.md) | Surface deepening opportunities — shallow-to-deep refactors that improve testability and AI-navigability |
+| [`/zoom-out`](zoom-out/SKILL.md) | Get a module map of a code area you're unfamiliar with, using the project's domain glossary |
 | [`/concise`](concise/SKILL.md) | Write a PR body, or reply to its comments, as concise readable bullets — the repo's own PR template, filled in plain sentences |
 | [`/split-prs`](split-prs/SKILL.md) | Reorganize a large PR into a gh-stack of deployable slices — each safe to ship alone, review-by-commit |
 | [`/improve-codebase-architecture`](improve-codebase-architecture/SKILL.md) | Scan for deepening opportunities, present them as an HTML report, then grill through the one you pick |
