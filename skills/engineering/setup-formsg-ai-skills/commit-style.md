@@ -14,7 +14,10 @@ Implementation skills (`tdd` and any successor impl loops) follow this conventio
 
 ## Message format
 
-This project mandates Conventional Commits. Subject line under ~70 characters, imperative mood, body wrapped at ~72. Reference an issue if one exists.
+This project mandates Conventional Commits. Subject line under ~70 characters, imperative mood, body wrapped at ~72. Reference an issue if one exists. ASD-STE100, ubiquitous language from `CONTEXT.md`.
+
+Sources feed **you**; the body gets their **meaning** in plain prose —
+not their labels (`D10`, `§A0`, `S6`, …).
 
 ## When commits go wide
 

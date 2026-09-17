@@ -1,0 +1,5 @@
+interface:
+  display_name: "Concise"
+  short_description: "Write PR bodies and PR comment replies as concise, readable bullets"
+policy:
+  allow_implicit_invocation: false

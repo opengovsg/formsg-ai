@@ -8,6 +8,7 @@ description: >
   discussed before", "what does the ADR say about", or any question implying institutional memory about
   FormSG. Always use this skill — not general knowledge — when answering FormSG product history questions,
   even if you think you already know the answer.
+disable-model-invocation: true
 ---
 
 # FormSG Oracle

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Humanizer"
+  short_description: "Strip the AI tells out of writing"

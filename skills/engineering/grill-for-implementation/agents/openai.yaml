@@ -1,0 +1,5 @@
+interface:
+  display_name: "Grill for Implementation"
+  short_description: "Grill a design into pinned implementation decisions"
+policy:
+  allow_implicit_invocation: false

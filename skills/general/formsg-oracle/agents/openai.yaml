@@ -1,0 +1,5 @@
+interface:
+  display_name: "FormSG Oracle"
+  short_description: "Answer why FormSG works the way it does"
+policy:
+  allow_implicit_invocation: false

@@ -10,7 +10,7 @@ Multi-axis review of the diff between `HEAD` and a fixed point — the PR's targ
 The four axes:
 
 - **Standards** — does the code follow the repo's documented standards? And are those standards themselves sound, or tech debt worth flagging?
-- **Spec** — does the code faithfully implement the originating issue / PRD / spec?
+- **Spec** — does the code faithfully implement the originating ticket or spec?
 - **Architecture** — are there deepening opportunities in the changed code? (lens of `/improve-codebase-architecture`)
 - **Divergent** — for each change, was this the best option among the alternatives, given the PR's scope?
 
@@ -30,9 +30,9 @@ Capture the diff command once: `git diff <fixed-point>...HEAD` (three-dot, again
 
 Look for the originating spec, in this order:
 
-1. Issue references in commit messages (`#123`, `Closes #45`, GitLab `!67`) - fetch via project's issue tracker.
+1. Ticket references in commit messages (`#123`, `Closes #45`) - fetch via project's ticket tracker.
 2. A path the user passed as an argument.
-3. A PRD/spec file under `docs/`, `specs/`, or `.scratch/` matching the branch or feature.
+3. A spec file under `docs/`, `specs/`, or `.scratch/` matching the branch or feature.
 4. If nothing is found, ask. If there's no spec, the **Spec** axis skips and reports "no spec available".
 
 ### 3. Identify the standards sources
@@ -73,7 +73,7 @@ Only if the user asked to post. **Post one batched, fully-inline review** — ev
 A change can pass one axis and fail another:
 
 - Follows every standard but implements the wrong thing → **Standards pass, Spec fail.**
-- Does exactly what the issue asked but breaks conventions → **Spec pass, Standards fail.**
+- Does exactly what the ticket asked but breaks conventions → **Spec pass, Standards fail.**
 - Correct and conventional, but a shallow module or a worse-than-the-alternative choice → caught only by **Architecture** / **Divergent.**
 
 Reporting them separately stops one axis from masking another.

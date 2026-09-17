@@ -1,0 +1,5 @@
+interface:
+  display_name: "Split PRs"
+  short_description: "Split a large PR into a deployable gh-stack"
+policy:
+  allow_implicit_invocation: false

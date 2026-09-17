@@ -4,16 +4,24 @@ A collection of agent skills (slash commands and behaviors) loaded by Claude Cod
 
 ## Language
 
-**Issue tracker**:
-The tool that hosts a repo's issues — GitHub Issues, Linear, a local `.scratch/` markdown convention, or similar. Skills like `to-issues` and `to-prd` read from and write to it.
-_Avoid_: backlog manager, backlog backend, issue host
+**Ticket tracker**:
+The tool that hosts a repo's **Tickets** — GitHub Issues, Linear, a local `.scratch/` markdown convention, or similar. Skills like `to-tickets` and `to-spec` read from and write to it. Per-repo configuration for it lives in `docs/agents/ticket-tracker.md`.
+_Avoid_: issue tracker, backlog manager, backlog backend, issue host
 
-**Issue**:
-A single tracked unit of work inside an **Issue tracker** — a bug, task, PRD, or slice produced by `to-issues`.
-_Avoid_: ticket (use only when quoting external systems that call them tickets)
+**Ticket**:
+A single tracked unit of work inside a **Ticket tracker** — a bug, a task, or a vertical slice produced by `to-tickets`. A ticket declares its blocking edges, its **Pinned implementation decisions**, and its test gates. A ticket is a ticket wherever it lives: a GitHub issue, a Linear card, or a markdown file under `.scratch/`.
+_Avoid_: issue, story, card (use only when quoting a platform's own API — `gh issue create`, a GitHub child issue)
+
+**Spec**:
+The document `to-spec` publishes: the settled problem, the decisions behind it, and the **Pinned implementation decisions** an implementation agent must not deviate from. Engineers own it, and it carries implementation decisions rather than product requirements.
+_Avoid_: PRD, design doc
+
+**Pinned implementation decision**:
+A load-bearing engineering decision settled during grilling and written into a **Spec** or **Ticket** so that a later implementation agent executes it verbatim instead of guessing — schema shape, failure modes, ordering, architecture. Pinning is what makes a decision binding; an unpinned decision is just discussion.
+_Avoid_: pinned contract, pinned implementation contract ("contract" is reserved for an API contract, which is one _kind_ of thing a decision may pin)
 
 **Triage role**:
-A canonical state-machine label applied to an **Issue** during triage (e.g. `needs-triage`, `ready-for-afk`). Each role maps to a real label string in the **Issue tracker** via `docs/agents/triage-labels.md`.
+A canonical state-machine label applied to a **Ticket** during triage (e.g. `needs-triage`, `ready-for-agent`). Each role maps to a real label string in the **Ticket tracker** via `docs/agents/triage-labels.md`.
 
 **Breadcrumb**:
 An author-written decision note dropped during implementation, capturing a small in-impl judgment call (the choice, alternatives considered, optional file:line anchor) that's too narrow for an **ADR**. Lives in `.scratch/<feature>/decisions.md` in the consuming repo. Consumed by `prepare-for-review` to populate PR body and inline review comments without re-deriving rationale from the diff.
@@ -21,7 +29,7 @@ _Avoid_: "decision log entry" (overlaps with ADR), "comment" (overlaps with code
 
 **Design source**:
 The canonical visual spec a frontend slice is verified against — typically a Figma file via the Figma MCP, but may be a user-supplied screenshot or description. Used by the `tdd` skill's visual cycle as the grounding for the **Visual gate**. Optional: a slice may have no design source, in which case the visual gate degrades to self-consistency review.
-_Avoid_: "mock", "design", "spec" (overloaded)
+_Avoid_: "mock", "design", "spec" (a **Spec** is the `to-spec` document)
 
 **Visual gate**:
 The agent-browser-vs-**Design source** comparison that closes a visual RED→GREEN cycle in the `tdd` skill. Uncommitted (not a regression test); pass bar is "no deviation a designer would flag in review." Distinct from committed visual regression (Chromatic snapshots of stories in CI).
@@ -29,10 +37,14 @@ _Avoid_: "visual test" (overlaps with Chromatic/story-based regression)
 
 ## Relationships
 
-- An **Issue tracker** holds many **Issues**
-- An **Issue** carries one **Triage role** at a time
+- A **Ticket tracker** holds many **Tickets**
+- A **Ticket** carries one **Triage role** at a time
+- A **Spec** produces many **Tickets**; a ticket names the spec it came from
+- A **Spec** and a **Ticket** each carry zero or more **Pinned implementation decisions**; `grill-for-implementation` is what produces them
 
 ## Flagged ambiguities
 
-- "backlog" was previously used to mean both the *tool* hosting issues and the *body of work* inside it — resolved: the tool is the **Issue tracker**; "backlog" is no longer used as a domain term.
-- "backlog backend" / "backlog manager" — resolved: collapsed into **Issue tracker**.
+- "backlog" was previously used to mean both the *tool* hosting tickets and the *body of work* inside it — resolved: the tool is the **Ticket tracker**; "backlog" is no longer used as a domain term.
+- "backlog backend" / "backlog manager" — resolved: collapsed into **Ticket tracker**.
+- "issue" carried three senses: the unit of work, the tool that hosts it, and a defect a reviewer finds. Resolved: the unit of work is the **Ticket** and the tool is the **Ticket tracker**, so "issue" now means only a defect (in the `review` skill) or a platform's own word for its records (`gh issue create`, a GitHub child issue).
+- "pinned contract" (`grill-for-implementation`) and "pinned implementation decision" (`to-spec`, `to-tickets`) named the same thing — a decision a later agent executes verbatim. Resolved: collapsed into **Pinned implementation decision**. "Contract" is no longer used for it, since an API contract is only one of the things a decision can pin.
